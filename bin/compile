@@ -5,4 +5,6 @@ build=$(cd "$1/" && pwd)
 
 buildpack=$(dirname $(dirname $0))
 
-cp $buildpack/bin/consul.sh $build/bin
+mkdir -p $build/.consul
+
+cp $buildpack/bin/consul.sh $build/.consul
