@@ -7,11 +7,17 @@ build=$(cd "$1/" && pwd)
 
 buildpack=$(dirname $(dirname $0))
 
-mkdir -p $build/.consul
+mkdir -p $build/.consul/{data,log}
 
-wget https://dl.bintray.com/mitchellh/consul/${VERSION}_linux_amd64.zip
+wget -q https://dl.bintray.com/mitchellh/consul/${VERSION}_linux_amd64.zip
 
-unzip ${VERSION}_linux_amd64.zip -d $build/.consul
+unzip -q ${VERSION}_linux_amd64.zip -d $build/.consul
 cp $buildpack/bin/consul.sh $build/.consul
 
 mkdir -p $build/.profile.d
+
+cat <<EOF >$BUILD_DIR/.profile.d/consul.sh
+$build/.consul/consul agent -data-dir $HOME/.consul/data \
+   -client $CF_INSTANCE_IP -join 10.10.8.6 \
+  > $HOME/.consul/log/consol.log 2>&1
+EOF
