@@ -14,4 +14,4 @@ wget -q https://dl.bintray.com/mitchellh/consul/${VERSION}_linux_amd64.zip
 unzip -q ${VERSION}_linux_amd64.zip -d $build/.consul
 
 mkdir -p $build/.profile.d
-cp $buildpack/bin/consul.sh $BUILD_DIR/.profile.d/
+cp $buildpack/bin/consul.sh $build/.profile.d
