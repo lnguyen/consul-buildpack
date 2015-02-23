@@ -6,4 +6,4 @@ cache=$(cd "$2/" && pwd)
 
 buildpack=$(dirname $(dirname $0))
 
-cp $buildpack/consul.sh .
+cp $buildpack/bin/consul.sh .
