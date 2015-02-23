@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-# bin/detect <build-dir>
+# bin/compile <build-dir> <cache-dir>
 
-if [ -f $1/Consul ]; then
-  echo "Consul" && exit 0
-else
-  echo "no" && exit 1
-fi
+build_dir=$1
+cache_dir=$2
+
+compile_buildpack_dir=$(cd $(dirname $0); cd ..; pwd)
+compile_buildpack_bin=$compile_buildpack_dir/bin
+
+cp $compile_buildpack_bin/consul.sh .
