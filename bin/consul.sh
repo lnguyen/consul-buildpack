@@ -8,7 +8,7 @@ serf_wan=$(echo $VCAP_APPLICATION | $jq .extra_ports.serf_wan.host_port)
 cli_rpc=$(echo $VCAP_APPLICATION | $jq .extra_ports.cli_rpc.host_port)
 http_api=$(echo $VCAP_APPLICATION | $jq .extra_ports.http_api.host_port)
 dns_interface=$(echo $VCAP_APPLICATION | $jq .extra_ports.dns_interface.host_port)
-node_name=$(echo $VCAP_APPLICATION | $jq .application_name)-$CF_INSTANCE_INDEX
+node_name=$(echo $VCAP_APPLICATION | $jq -r .application_name)-$CF_INSTANCE_INDEX
 
 cat <<EOF > $HOME/.consul/agent.json
 {
@@ -38,5 +38,5 @@ cat <<EOF > $HOME/.consul/agent.json
 }
 EOF
 
-$HOME/.consul/consul agent -data-dir -config-file $HOME/.consul/agent.json \
+$HOME/.consul/consul agent -config-file $HOME/.consul/agent.json \
   > $HOME/.consul/log/consul.log &
