@@ -28,12 +28,12 @@ cat <<EOF > $HOME/.consul/agent.json
     "10.10.8.8"
   ],
   "ports": {
-    "dns": "${dns_interface}",
-    "http": "${http_api}",
-    "rpc": "${cli_rpc}",
-    "serf_lan": "${serf_lan}",
-    "serf_wan": "${serf_wan}",
-    "server": "${server_rpc}"
+    "dns": ${dns_interface},
+    "http": ${http_api},
+    "rpc": ${cli_rpc},
+    "serf_lan": ${serf_lan},
+    "serf_wan": ${serf_wan},
+    "server": ${server_rpc}
   }
 }
 EOF
