@@ -11,6 +11,9 @@ mkdir -p $build/.consul/{data,log}
 
 wget -q https://dl.bintray.com/mitchellh/consul/${VERSION}_linux_amd64.zip
 
+wget -q http://stedolan.github.io/jq/download/linux64/jq
+
+mv jq $build/.consul
 unzip -q ${VERSION}_linux_amd64.zip -d $build/.consul
 
 mkdir -p $build/.profile.d
